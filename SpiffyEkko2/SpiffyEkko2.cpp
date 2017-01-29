@@ -167,7 +167,7 @@ bool ValidUlt(IUnit* t)
 		return true;
 }
 
-auto GetDistance(IUnit* Player, IUnit* target)
+float GetDistance(IUnit* Player, IUnit* target)
 {
 	return (Player->GetPosition() - target->GetPosition()).Length2D();
 }
