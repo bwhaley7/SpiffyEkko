@@ -398,7 +398,7 @@ void Items()
 
 void Save()
 {
-	if (GEntityList->Player()->HealthPercent() <= 30)
+	if (GEntityList->Player()->HealthPercent() <= 30 && CountEnemiesInRange(Q->Range()) >= 1)
 		R->CastOnPlayer();
 }
 
