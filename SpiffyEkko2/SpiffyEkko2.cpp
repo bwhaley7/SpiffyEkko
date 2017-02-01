@@ -542,7 +542,7 @@ void LogicE()
 			&& CountEnemiesInRange(500) < 3 && GetDistancePos(t->ServerPosition(), GGame->CursorPosition()) > GetDistancePos(t->ServerPosition(), GEntityList->Player()->ServerPosition()))
 		{
 			E->CastOnPosition(GGame->CursorPosition());
-			if (t != nullptr)
+			if (t != nullptr && GEntityList->Player()->IsValidTarget(t,445))
 				GGame->IssueOrder(GEntityList->Player(), kAutoAttack, t);
 		}
 		else if (GEntityList->Player()->GetHealth() > GEntityList->Player()->GetMaxHealth() * 0.4 && GEntityList->Player()->GetMana() > RMANA + EMANA
@@ -551,14 +551,14 @@ void LogicE()
 			if (t != nullptr && t->IsValidTarget() && GEntityList->Player()->GetMana() > QMANA + EMANA + WMANA && GetDistancePos(t->ServerPosition(), GGame->CursorPosition()) + 300 < GetDistancePos(t->ServerPosition(), GEntityList->Player()->ServerPosition()))
 			{
 				E->CastOnPosition(GGame->CursorPosition());
-				if (t != nullptr)
+				if (t != nullptr && GEntityList->Player()->IsValidTarget(t, 445))
 					GGame->IssueOrder(GEntityList->Player(), kAutoAttack, t);
 			}
 		}
 		else if (t != nullptr && t->IsValidTarget() && GDamage->GetSpellDamage(GEntityList->Player(), t, kSlotE) + GDamage->GetSpellDamage(GEntityList->Player(), t, kSlotW) > t->GetHealth())
 		{
 			E->CastOnPosition(t->ServerPosition());
-			if (t != nullptr)
+			if (t != nullptr && GEntityList->Player()->IsValidTarget(t, 445))
 				GGame->IssueOrder(GEntityList->Player(), kAutoAttack, t);
 		}
 	}
